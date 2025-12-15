@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,700");
+
+.dsRepository{
+display: block;
+margin: 18px 30px;
+}
+
+.panelButton{
+display: inline-block;
+width: 90px;
+text-align: center;
+border: 1px solid #0a3069;
+border-radius: 6px;
+cursor: pointer;
+font-size: smaller;
+font-weight: bold;
+color: #444444;
+}
+
+.panelButton:hover{
+background-color: #cccccc;
+}
+
+
+.dsResultTable {
+margin-top:20px;
+display: table;
+}
+
+.dsResultHeaderRow{
+display: table-row;
+font-size: smaller;
+color:#333333;
+font-weight: bolder;
+}
+
+.dsTitleCell{
+font-weight: bold;
+}
+
+.dsResultRow, .dsActiveResultRow {
+display: table-row;
+font-size: smaller;
+cursor: pointer;
+}
+
+.dsActiveResultRow {
+background-color: #8daac1;
+}
+
+
+
+.dsResultRow:hover{
+background-color: #b0bed9;
+}
+
+.dsResultCell{
+display: table-cell;
+padding: 4px 8px 4px 0 ;
+min-width: 200px;
+border-bottom: 1px solid #999999;
+}
+
+.dsPicResultCell{
+display: table-cell;
+padding: 4px 8px 4px 0 ;
+min-width: 30px;
+border-bottom: 1px solid #999999;
+}
+
+nav{
+font-family: "Roboto", sans-serif;
+font-weight: bold;
+font-size: smaller;
+margin-right: 200px;
+}
+
+.isLinkElement{
+cursor: pointer;
+}
+
+.dsBrandName{
+font-family: "Roboto", sans-serif;
+font-weight: bold;
+}
+
+.panelIcon, .panelIconDisabled {
+display: inline-block;
+width: 12px;
+height: 12px;
+}
+
+.panelIconDisabled{
+opacity: 0.2;
+}
+
+.editorWrapper {
+display:block;
+width:900px;
+margin: 20px 0;
+}
+
+.headertext{
+width: 1200px;
+}
+
+.mdNewLine {
+white-space: pre-wrap;
+}
+
+.rowBtn {
+display: inline-block;
+margin: 10px 8px 10px 0;
+width: 100px;
+}
+
+.writeMsg{
+display: inline-block;
+font-size: smaller;
+color: #ffffff !important;
+margin-right: 20px;
+}
+
+.newBlockOptionBtn{
+display: inline-block;
+margin-bottom: 8px;
+width: 100px;
+}
+
+[id^="map"] {
+display: block;
+width: 100%;
+height: 500px !important;
+border: 1px solid #999999;
+z-index: 0;
+}
+
+.editorPanel{
+position:absolute;
+right: 490px;
+top: 110px;
+}
+
+.editorPanelBtn {
+display: inline-block;
+margin-right: 10px;
+width: 120px;
+cursor: pointer;
+}
+
+#yasgui_ed, #yasgui_ed > * {
+max-width: 1000px;
+}
+
+.homeText{
+display: none;
+margin: 40px 20px;
+background-color: #eeeeee;
+width: 840px;
+padding: 10px 16px;
+border: 1px solid #aaaaaa;
+}
+
+.homeText div{
+margin: 14px 0;
+width: 800px;
+font-size: 14px;
+line-height: 20px;
+}
+
+.settingsBlock{
+margin: 40px 80px;
+background-color: #eeeeee;
+width: 840px;
+padding: 10px 16px;
+border: 1px solid #aaaaaa;
+}
+
+.settingsItem{
+margin: 20px 10px;
+padding-bottom: 8px;
+border-bottom: 1px solid #cccccc;
+}
+
+.settingItemHeader{
+font-weight: bold;
+}
+
+.settingsBtnBar{
+margin: 8px 0;
+}
+
+.addShareBtn{
+cursor: pointer;
+}
+
+.sharedWithRow{
+font-size: smaller;
+}
+
+.sharedWithRow div{
+display:inline-block;
+margin-right: 10px;
+}
+
+.shareName{
+width: 500px;
+}
+
+.shareRights{
+width: 150px;
+}
+
+.shareButton{
+font-weight: bold;
+color: #0a3069;
+}
+
+.rightsList{
+list-style-type: none;
+}
+
+#announcement{
+display: block;
+font-weight: bold;
+width: 100%;
+text-align: center;
+padding-top:40px;
+}

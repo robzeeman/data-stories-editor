@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__
+/src/service/venv/
+/.idea/
+/src/frontend/node_modules/
+/src/frontend/build/

@@ -1,0 +1,482 @@
+{
+    "_declaration": {
+        "_attributes": {
+            "encoding": "UTF-8",
+            "version": "1.0"
+        }
+    },
+    "_instruction": {"xml-model": "href=\"schema/datastory.rng\" type=\"application/xml\" schematypens=\"http://relaxng.org/ns/structure/1.0\""},
+    "ds:DataStory": {
+        "_attributes": {
+            "xml:lang": "en",
+            "xmlns:dct": "http://purl.org/dc/terms/",
+            "xmlns:ds": "http://example.com/ds/",
+            "xmlns:wp4": "https://github.com/CLARIAH/wp4-stories/ns#"
+        },
+        "ds:Metadata": {
+            "dct:creator": [
+                {"_text": "Huygens ING"}
+            ],
+            "dct:license": [
+                {"_text": "http://creativecommons.org/licenses/by-sa/4.0/"}
+            ],
+            "dct:title": [
+                {"_text": "Demo Netwerk Maritieme Bronnen"}
+            ],
+            "ds:Endpoint": [
+                {"_text": "https://sparql.vocabs.dev.clariah.nl/netwerk-maritieme-bronnen"}
+            ],
+            "ds:LandingPage": [
+                {"_text": ""}
+            ]
+        },
+        "ds:Story": {
+            "ds:Block": [
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "41edf083"
+                    },
+                    "_comment": "",
+                    "_text": "Erfgoedinformatie komt in steeds grotere mate in digitale vorm beschikbaar. Dit geldt zeker ook voor maritiem erfgoed. Deze demo laat zien dat toepassing van Linked Open Data-techniek grote kansen biedt om informatie van archieven, bibliotheken, musea en onderzoeksinstellingen onderling te verbinden, te verrijken en onbegrensd toegankelijk te maken. Deze techniek stelt gebruikers in staat om maritieme collecties en datasets in allerlei variaties te bevragen en deze in samenhang te bezien. Het bredere publiek kan hiermee op nieuwe, virtuele manieren bij maritiem erfgoed worden betrokken, wat de maatschappelijke impact van het erfgoed versterkt.\n\nHet begint echter allemaal bij samenwerking. Het verbinden van data vereist dat de eigen collecties en datasets met anderen worden gedeeld en dat we samen nadenken over het cre\u00ebren van nieuwe verbanden. Dit is een voortdurend proces en vergt ook samenwerking in een groter, decentraal verband \u2013 een Netwerk Maritieme Bronnen. Met deze demo hopen het Huygens Instituut voor Nederlandse Geschiedenis, de Rijksdienst voor het Cultureel Erfgoed, het Rijksmuseum, Het Scheepvaartmuseum en het Zuiderzeemuseum een eerste concrete stap in deze richting te zetten.\n\nDe demo is opgebouwd rond de Verenigde Oost-Indische Compagnie. De VOC wordt in 1602 opgericht om geld te verdienen aan de specerijenhandel van Azi\u00eb naar Europa, en blijft vervolgens bijna twee eeuwen lang actief als handelscompagnie. Anno 2018 herbergen archieven, musea en onderzoeksinstituten een schat aan bronnenmateriaal van en over de VOC, uiteenlopend van papieren documenten als scheepsjournalen en soldijboeken tot databases en vondsten uit scheepswrakken. Het diverse karakter van de bronnen en hun verspreiding over diverse instellingen maakt de VOC, en VOC-schip *'t Vliegend Hart* in het bijzonder, bij uitstek geschikt als thema voor deze demo.",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": "Introductie"}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "47ad89f5"
+                    },
+                    "_comment": "",
+                    "_text": "Om specerijen als peper, nootmuskaat en kruidnagelen te kunnen bemachtigen, sticht de VOC handelsposten in heel Azi\u00eb, van Perzi\u00eb (het huidige Iran) tot Japan en van India en Ceylon (Sri Lanka) tot Taiwan. Het epicentrum van de handelsactiviteiten is de Indonesische archipel. Hier bouwt de VOC op Java een eigen stad genaamd Batavia, die niet alleen als hoofdzetel in Azi\u00eb dient maar ook als verzamelplaats voor schepen van en naar Europa en schepen die binnen Azi\u00eb varen.\n\nDe successen van de VOC hebben ook een keerzijde. Zo gaat het stichten van handelsposten vaak met geweld gepaard. Tijdens een expeditie onder leiding van Jan Pieterszoon Coen wordt de bevolking van de Banda-eilanden vermoord, gedeporteerd of verdreven om een monopolie op nootmuskaat te kunnen vestigen. Ook neemt de Compagnie actief deel aan slavenhandel en slavernij. In de zeventiende en achttiende eeuw worden naar schatting 660.000 tot 1.135.000 slaven naar de VOC-gebieden in Azi\u00eb verscheept, waar ze te werk worden gesteld op werven, in pakhuizen, en in huishoudens van particulieren.",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": "De Verenigde Oost-Indische Compagnie"}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "0e724431"
+                    },
+                    "_comment": "",
+                    "_text": "*Bronnen: Rijksdienst voor het Cultureel Erfgoed, Rijksmuseum en Het Scheepvaartmuseum*",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": "Een patroontas op de zeebodem"}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "0aab7b82"
+                    },
+                    "_comment": "",
+                    "_text": "Begin jaren tachtig vinden duikers voor de kust van Zeeland een patroontas uit de 18de eeuw. Het is een van de vele vondsten die worden gedaan in het wrak van *'t Vliegend Hart*, een VOC-schip dat op 3 februari 1735 vlak na vertrek uit Zeeland met man en muis vergaat. Aanleiding voor de ramp is een storm die het schip doet vastlopen op een zandbank. Hoewel het de bemanning nog lukt om los te komen van de zandbank, blijkt de romp dermate beschadigd dat het schip in de golven verdwijnt.\n\nIn 1981 wordt het wrak van *'t Vliegend Hart* teruggevonden. Er komt een duikoperatie op gang waarbij gouden dukaten, zilveren munten en gebruiksvoorwerpen naar boven worden gehaald. De patroontas belandt uiteindelijk in de collectie van het Rijksmuseum, samen met vele andere objecten. Ook bij Het Scheepvaartmuseum en Zeeuws maritiem muZEEum komt een deel van de vondsten terecht. De overblijfselen van het schip zelf liggen nog op de zeebodem en zijn [recent opnieuw onderzocht](https://nos.nl/artikel/2257450-voc-wrak-bedreigd-door-paalworm), waarbij houtrot en paalwormen zijn waargenomen.",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "href": "http://localhost:5000/168475ff-7055-4cf0-b1ec-19cd83641f4d/images/patroontas.jpg",
+                        "mime": "image/*",
+                        "type": "media",
+                        "xml:id": "759c6a8e"
+                    },
+                    "_comment": "",
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": "Gevonden patroontas"}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "63b6049e"
+                    },
+                    "_comment": "",
+                    "_text": "De patroontas uit het wrak van *'t Vliegend Hart* bevat twaalf buizen voor patronen van musketten. Soldaten die dienstnemen bij de VOC worden van zo\u2019n patroontas voorzien. In Azi\u00eb bewaken deze militairen de handelsposten van de Compagnie, en worden ze ingezet bij oorlogen tegen inheemse vorsten en concurrerende Europese handelscompagnie\u00ebn. Tijdens de schipbreuk van *'t Vliegend Hart* zijn er 76 soldaten aan boord. E\u00e9n van hen moet de eigenaar zijn geweest van de patroontas.",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "href": "queries/wrak.rq",
+                        "mime": "application/sparql-query",
+                        "type": "query",
+                        "xml:id": "b20999e"
+                    },
+                    "ds:Cues": {
+                        "ds:visualisation": {"_text": "geo"}
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "8e79d3f5"
+                    },
+                    "_comment": "",
+                    "_text": "*Bronnen: Huygens ING en Nationaal Archief*\n\nDe 76 aangemonsterde soldaten op *'t Vliegend Hart* zijn onderdeel van een 256 koppen-tellende bemanning. Deze tabel toont de verschillende rangen aan boord van het schip en hun aandeel in het totaal van de opvarenden (in rood). Ook is te zien hoe deze percentages zich verhouden tot de gemiddelde samenstelling van bemanningen op VOC-schepen (in blauw). Hieruit blijkt bijvoorbeeld dat er bij vertrek meer militairen op *'t Vliegend Hart* zijn ingescheept dan gebruikelijk is op VOC-schepen. Daarentegen liggen de percentages *seamen* (matrozen en vergelijkbare lage functies) bij elkaar opgeteld dicht in de buurt van het algemene gemiddelde.",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": "De opvarenden van 't Vliegend Hart"}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "dd0f3b4e"
+                    },
+                    "_comment": "",
+                    "_text": "SPARQL QUERY",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "10100367"
+                    },
+                    "_comment": "",
+                    "_text": "Op deze kaart is de herkomst van de militairen en zeevarenden aangegeven. Van alle opvarenden komen de meeste lieden uit de Lage Landen. Daarnaast varen er bemanningsleden mee uit de Duitstalige gebieden, Frankrijk en Scandinavi\u00eb. Het verschil tussen de militairen en zeevarenden is ook duidelijk. Terwijl de eerste categorie bijna volledig afkomstig is uit aan zee gelegen regio\u2019s, stammen de militairen zowel uit kuststreken als landinwaarts gelegen gebieden.",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "7029fbfa"
+                    },
+                    "_comment": "",
+                    "_text": "SPARQL QUERY",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "1a8aaf8a"
+                    },
+                    "_comment": "",
+                    "_text": "*Bronnen: Huygens ING, Nationaal Archief, Rijksmuseum*\n\n*'t Vliegend Hart* vaart in februari 1735 voor de tweede keer uit naar Azi\u00eb. Het schip is in 1729 gebouwd door de kamer van Zeeland (een van de in totaal zes VOC-kamers) en begint in december 1730 vanuit Rammekens aan zijn eerste reis, samen met andere VOC-schepen in de jaarlijkse \u2018kerstvloot\u2019. Onderweg wordt aan Kaap de Goede Hoop een tussenstop gemaakt om de voorraden aan te vullen. Vervolgens zeilt het schip door naar Batavia, waar het in juli 1731 na een reis van zeven maanden aankomt. Daarmee vaart *'t Vliegend Hart* sneller dan gemiddeld: VOC-schepen doen er in de jaren 1730 zo\u2019n acht maanden over om Azi\u00eb te bereiken.",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": "Reizen en bestemmingen"}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "c47f7cd7"
+                    },
+                    "_comment": "",
+                    "_text": "SPARQL QUERY",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "b4fe9bba"
+                    },
+                    "_comment": "",
+                    "_text": "Aangekomen in Batavia wordt *'t Vliegend Hart* ingezet op de vaart binnen Azi\u00eb. De eerste reis begint in augustus 1731 en voert in gezelschap van de VOC-schepen Stadhuis van Delft en Langerode naar Surat, een belangrijke haven voor de VOC in het westen van India. Hier koopt de Compagnie allerlei soorten textiel die in het Europa van de achttiende eeuw erg gewild zijn.\n\nVanuit Surat vaart *'t Vliegend Hart* door naar Cochin aan de Malabarkust van India, waar de VOC gevestigd is voor de inkoop van peper. Daarna wordt nog een stop gemaakt op Ceylon voordat de terugreis naar Batavia aanvangt, waar het schip in juli 1732 terugkeert.\n\nRuim een jaar later zeilt *'t Vliegend Hart* in december 1733 vanuit Ceylon weer naar Europa. Dit betekent dat het schip in de tussentijd van Batavia naar Ceylon moet zijn gevaren, en wellicht ook nog andere reizen heeft gemaakt. In de datasets die voor deze demo zijn gebruikt, wordt echter niets vermeld over reizen van het schip tussen juli 1732 en december 1733.\n\nSamen met vier andere VOC-schepen zet *'t Vliegend Hart* vanuit Ceylon koers naar Kaap de Goede Hoop, om daarna door te zeilen naar Zeeland. Na een reis van bijna acht maanden doemt het schip in augustus 1734 voor Rammekens op. De duur van de overtocht is daarmee gelijk aan de gemiddelde reistijd van VOC-schepen die in de jaren 1730 van Ceylon naar Europa varen.",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "2ee4280d"
+                    },
+                    "_comment": "",
+                    "_text": "SPARQL QUERY",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "a8f33824"
+                    },
+                    "_comment": "",
+                    "_text": "*Bronnen: Huygens ING, Nationaal Archief*\n\nIn Azi\u00eb is Europese handelswaar weinig gewild in de tijd van de VOC. De Compagnie kan alleen goud en zilver op grote schaal verhandelen, met name tegen textiel. Schepen uit Europa voeren dan ook enorme hoeveelheden edelmetaal aan. Daarnaast worden voor de handelsposten in Azi\u00eb allerlei voorraden meegebracht, zoals equipagegoederen voor uitrusting van en onderhoud aan schepen, wapens en munitie voor militairen, bouwmaterialen voor forten en huizen, levensmiddelen, kleding en schrijfgerei. Als laatste hebben de schepen ook nog ballast aan boord, bijvoorbeeld zand, stenen of oud ijzer.\n\nAls *'t Vliegend Hart* in 1730 voor de eerste keer uitvaart, is het schip beladen met een grote hoeveelheid zilverstaven en zilveren munten in de vorm van markrealen en dukatons. Verder wordt er zeep meegenomen en een partij equipagegoederen, waaronder teer, pek en hout voor masten. De ballast bestaat uit koper, lood, steenkool en stenen.",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": "De lading van het schip"}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "href": "queries/goederen.rq",
+                        "mime": "application/sparql-query",
+                        "type": "query",
+                        "xml:id": "b20625"
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "1144c88e"
+                    },
+                    "_comment": "",
+                    "_text": "SPARQL QUERY",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "c2962e76"
+                    },
+                    "_comment": "",
+                    "_text": "Na aankomst in Batavia worden alle goederen gelost om plaats te maken voor een nieuwe lading, ditmaal voor Surat. Het is niet duidelijk welke producten het schip dan precies aan boord heeft; alleen de gezamenlijke lading van *'t Vliegend Hart*, *Stadhuis van Delft* en *Langerode* is bekend. Het gaat onder meer om specerijen, suiker, ivoor, *equipagegoederen*, buskruit, wijn en bier. Ook voeren de schepen in totaal 37 paradijsvogels mee.\n\nIn Surat worden de ruimen van *'t Vliegend Hart* gevuld met allerlei soorten textiel, 50 kisten zeep, een partij gom, zegellak en kwik. Op de terugweg naar Batavia stopt het schip nog in Cochin en op Ceylon om een deel van de lading af te staan, en wellicht ook nieuwe goederen in te nemen.",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "8450933e"
+                    },
+                    "_comment": "",
+                    "_text": "SPARQL QUERY",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": ""}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "abd681d2"
+                    },
+                    "_comment": "",
+                    "_text": "Deze demo vormt geen uitputtend overzicht van alle denkbare toepassingen voor onderzoek die de geselecteerde bronnen bieden. De volgende onderzoeksthema\u2019s over de VOC in het algemeen en 't Vliegend Hart in het bijzonder behoren tot de mogelijkheden:\n\n- Het carri\u00e8reverloop van opvarenden van *'t Vliegend Hart* die in 1730 naar Azi\u00eb uitvaren;\n- Het leven aan boord van VOC-schepen aan de hand van een verdere koppeling van wrakvondsten aan bemanningsleden die in 1735 omkomen bij de schipbreuk van *'t Vliegend Hart*;\n- De bouw van VOC-schepen door de kamer van Zeeland in de achttiende eeuw;\n- Troepenaanvoer door de VOC vanuit Europa naar Azi\u00eb in de achttiende eeuw;\n- Handelsstromen tussen Batavia en Surat in de achttiende eeuw;\n- Het vervoer van slaven door de VOC in Azi\u00eb in de achttiende eeuw;\n- Etc.\n",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": "Andere perspectieven"}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "2ca8f76f"
+                    },
+                    "_comment": "",
+                    "_text": "Publicaties over de VOC, opgevraagd uit de Linked Dataset van Worldcat:",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": "Verder lezen"}
+                    }
+                },
+                {
+                    "_attributes": {
+                        "href": "queries/works.rq",
+                        "mime": "application/sparql-query",
+                        "type": "query",
+                        "xml:id": "b20087"
+                    }
+                },
+                {
+                    "_attributes": {
+                        "mime": "text/markdown",
+                        "type": "text",
+                        "xml:id": "e516b399"
+                    },
+                    "_comment": "",
+                    "_text": "Deze demo is ontwikkeld door het Huygens Instituut voor Nederlandse Geschiedenis en Triply, in samenwerking met de Rijksdienst voor het Cultureel Erfgoed, het Rijksmuseum, Het Scheepvaartmuseum en het Zuiderzeemuseum.\n\nTeksten: [Huygens ING](https://www.huygens.knaw.nl/)\n\nDesign en infrastructuur: [Triply](https://triply.cc/)\n\nMet dank aan Kees Hendriks en [CLARIAH-CORE](https://www.clariah.nl/)",
+                    "ds:Cues": {
+                        "_comment": [],
+                        "ds:title-prologue": {
+                            "_attributes": {"type": "template"},
+                            "_text": "# I. {$ds-Block/dct:title}"
+                        }
+                    },
+                    "ds:Metadata": {
+                        "_comment": "",
+                        "dct:title": {"_text": "Colofon"}
+                    }
+                }
+            ]
+        }
+    }
+}
