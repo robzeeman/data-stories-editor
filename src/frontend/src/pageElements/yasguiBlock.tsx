@@ -97,7 +97,7 @@ export default function YasguiBlock({
                     }}>⇊</div><div id={yas_id} className="yasgui_query_permitted"/></div>)
                     :
                     (<div><div title="Edit query" className="querySwitch" onClick={() => {
-                        setCanQuery(true)
+                        setCanQuery(true);
                     }}>⇈</div>
                         <div id={yas_id} className="yasgui_readOnly"/></div>)}
 

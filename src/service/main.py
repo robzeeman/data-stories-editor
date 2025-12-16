@@ -20,6 +20,7 @@ from request_types import (UrlType, SettingStatus, UserRights, DataStory)
 from dependencies import authenticated_user
 from fastapi.staticfiles import StaticFiles
 from starlette.exceptions import HTTPException as StarletteHTTPException
+from config import Settings
 from pathlib import Path
 
 class SPAStaticFiles(StaticFiles):
@@ -41,7 +42,7 @@ app.add_middleware(CORSMiddleware, allow_origins=['http://localhost:3000'], allo
 app.include_router(auth_router)
 
 
-data = os.environ.get("DATA_DIR", "/Users/robzeeman/Documents/DI_code/data_stories/oidc_service/data/")
+data = os.environ.get("DATA_DIR", Settings.local_data)
 
 
 @app.get("/")
@@ -251,10 +252,10 @@ async def resources(uuid: str, resourcetype: str, filename: str):
 #     return FileResponse(fp)
 
 def get_auth_status(user):
-    #return {"logged_in": "yes", "user": "Rob Zeeman", "eppn": "666"}
-    if user:
-        return {"logged_in": "yes", "user": user.name, "eppn": user.user_id}
-    return {"logged_in": "no", "user": "", "eppn": ""}
+    return {"logged_in": "yes", "user": "Rob Zeeman", "eppn": "666"}
+    # if user:
+    #     return {"logged_in": "yes", "user": user.name, "eppn": user.user_id}
+    # return {"logged_in": "no", "user": "", "eppn": ""}
 
 
 if __name__ == "__main__":

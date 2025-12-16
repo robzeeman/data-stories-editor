@@ -6,10 +6,10 @@ import uuid
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from urllib.parse import urlparse
-
+from config import Settings
 import requests
 
-data = os.environ.get("DATA_DIR", "/Users/robzeeman/Documents/DI_code/data_stories/oidc_service/data/")
+data = os.environ.get("DATA_DIR", Settings.local_data)
 
 def createDataFolder():
     #data = 'data/'
