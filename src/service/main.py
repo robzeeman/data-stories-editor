@@ -23,17 +23,6 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from config import local_data
 from pathlib import Path
 
-class SPAStaticFiles(StaticFiles):
-    # Override the get_response method, which is responsible for retrieving
-    # static file responses for given paths.
-    async def get_response(self, path: str, scope):
-        try:
-            return await super().get_response(path, scope)
-        except (HTTPException, StarletteHTTPException) as ex:
-            if ex.status_code == 404:
-                return await super().get_response("index.html", scope)
-            else:
-                raise ex
 
 app = FastAPI()
 
@@ -41,15 +30,14 @@ app.add_middleware(SessionMiddleware, secret_key='dkhkajhdlkhdkkk')
 app.add_middleware(CORSMiddleware, allow_origins=['http://localhost:3000'], allow_credentials=True, allow_methods=['*'], allow_headers=['*'])
 app.include_router(auth_router)
 
-
 data = os.environ.get("DATA_DIR", local_data)
 
 
-@app.get("/")
-def hello_world():
-    retStruc = {"app": "CLARIAH Data Stories Service", "version": "1.0"}
-    # jsonHeaders(response)
-    return RedirectResponse("http://localhost:3000")
+# @app.get("/")
+# def hello_world():
+#     retStruc = {"app": "CLARIAH Data Stories Service", "version": "1.0"}
+#     # jsonHeaders(response)
+#     return RedirectResponse("http://localhost/app")
 
 @app.post("/check_url")
 def check_url(data: UrlType):
@@ -140,7 +128,7 @@ def get_item(ds: str, userdata: Annotated[dict | None, Depends(authenticated_use
 
 # hier moet de sqllite database bevraagd worden, om de lijstpagina te genereren
 @app.get("/get_data_stories")
-def getDataStories(userdata: Annotated[dict | None, Depends(authenticated_user)]):
+async def getDataStories(userdata: Annotated[dict | None, Depends(authenticated_user)]):
     status = 'OK'
     auth_status = get_auth_status(userdata)
     structure = getDataStoriesDB(auth_status)
@@ -257,6 +245,8 @@ def get_auth_status(user):
         return {"logged_in": "yes", "user": user.name, "eppn": user.user_id}
     return {"logged_in": "no", "user": "", "eppn": ""}
 
+
+app.mount("/", StaticFiles(directory="frontend", html=True), name="spa")
 
 if __name__ == "__main__":
     uvicorn.run('main:app', host='0.0.0.0', port=80, timeout_keep_alive=60, reload=True,
