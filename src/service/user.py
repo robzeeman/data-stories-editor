@@ -1,6 +1,8 @@
+
 class User:
     def __init__(self, user_data):
         self.user_data = user_data
+
 
     @property
     def user_id(self):

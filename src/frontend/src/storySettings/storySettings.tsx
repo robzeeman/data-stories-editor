@@ -19,7 +19,7 @@ function StorySettings() {
 
 
     async function get_settings(store) {
-        const response = await fetch(API_URL + '/settings/?ds=' + store);
+        const response = await fetch(API_URL + 'get_settings?ds=' + store);
         const data = await response.json();
         setStatus(data.status);
         setTitle(data.title);

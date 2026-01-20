@@ -27,7 +27,7 @@ from pathlib import Path
 app = FastAPI()
 
 app.add_middleware(SessionMiddleware, secret_key='dkhkajhdlkhdkkk')
-app.add_middleware(CORSMiddleware, allow_origins=['http://localhost:3000'], allow_credentials=True, allow_methods=['*'], allow_headers=['*'])
+app.add_middleware(CORSMiddleware, allow_origins=['http://localhost'], allow_credentials=True, allow_methods=['*'], allow_headers=['*'])
 app.include_router(auth_router)
 
 data = os.environ.get("DATA_DIR", local_data)
@@ -45,9 +45,9 @@ def check_url(data: UrlType):
     result = uri_validator(url)
     return {"status": result}
 
-@app.get("/settings")
-def settings(id: str):
-    return getDataStorySettings(id)
+@app.get("/get_settings")
+async def settings(ds: str):
+    return getDataStorySettings(ds)
 
 @app.post('/set_settings')
 def set_settings(data: SettingStatus):

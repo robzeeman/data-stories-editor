@@ -7,6 +7,7 @@ from starlette.responses import RedirectResponse
 from oauth import oauth
 from dependencies import authenticated
 from user import User
+from functions import insert_user
 
 router = APIRouter(tags=['auth'])
 
@@ -25,6 +26,7 @@ async def oidc_redirect(request: Request):
         if 'nickname' in token.get('userinfo') and 'email' in token.get('userinfo') else \
         await oauth.oidc.userinfo(token=token)
     request.session['user'] = dict(userinfo)
+    insert_user(request.session['user'])
 
     if 'persisted' not in request.session:
         request.session['persisted'] = True

@@ -259,9 +259,10 @@ def getListUUIDs():
 def insert_user(user_data: dict):
     con = sl.connect(data + '/datastories.db')
     cur = con.cursor()
-    sql = "INSERT INTO visitors (name, email, eppn) VALUES (?, ?, ?)"
+    sql = "INSERT OR IGNORE INTO visitors (name, email, eppn) VALUES (?, ?, ?)"
     values = (user_data["nickname"], user_data["email"], user_data["sub"])
     cur.execute(sql, values)
+    con.commit()
     cur.close()
     con.close()
 
