@@ -19,7 +19,7 @@ WHERE {
   ?death iisgv:deceased ?deceased .
   ?death bio:date ?date .
  
-  BIND(month(?date) as ?month)
-  BIND(year(?date) as ?year)   
+  BIND(month(xsd:dateTime(?date)) as ?month)
+  BIND(year(xsd:dateTime(?date)) as ?year)   
     
-} ORDER BY ASC (?month)
+} GROUP BY ?month ORDER BY ASC(?month)

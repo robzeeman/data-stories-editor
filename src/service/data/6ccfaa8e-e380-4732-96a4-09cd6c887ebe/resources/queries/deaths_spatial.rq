@@ -41,7 +41,7 @@ WHERE {
       ?death iisgv:event_location ?gemeente .
       ?gemeente gg:amsterdamCode ?amco .
       ?amco   ^gg:amsterdamCode ?gg_gemeente .
-      BIND(year(?date) as ?year)
+      BIND(year(xsd:dateTime(?date)) as ?year)
       FILTER  NOT EXISTS {
      ?gg_gemeente gg:startDate ?startdate 
         FILTER(?startdate >= "1918-01-01"^^<http://www.w3.org/2001/XMLSchema#date>)
@@ -50,12 +50,12 @@ WHERE {
      ?gg_gemeente gg:endDate ?enddate 
         FILTER(?enddate <= "1918-01-01"^^<http://www.w3.org/2001/XMLSchema#date>)
    }
-    }
+    } GROUP BY ?amco   ?gg_gemeente  ?max ?wkt
   }
   BIND(xsd:float(?1910+?1911+?1912+?1913+?1914+?1915+?1916+?1917)/8 as ?mean) 
   BIND(xsd:decimal(?1918/?mean) as ?excess)
   BIND ( IF ( ?excess > 1.60, 1, IF ( ?excess < 1.38, 0.35, IF (?excess >= 1.38 &&  ?excess <= 1.60, 0.65, ?v ) )) AS ?category)
-  BIND(concat('crimson,', (?category)) as ?wktColor)
+  BIND(concat('reds,', (?category)) as ?wktColor)
   BIND(concat(substr(STR(?excess), 0, 4),'_', STRAFTER(STR(?gg_gemeente), 'gemeentenaam/')) as ?wktTooltip)
 
 }
