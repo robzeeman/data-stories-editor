@@ -19,6 +19,6 @@ class UserRights(BaseModel):
 class DataStory(BaseModel):
     datastory_id: str
     datastory_title: str
-    datastory: str
+    datastory_file: str
 
 

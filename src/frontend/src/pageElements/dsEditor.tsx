@@ -359,7 +359,7 @@ function DsEditor({
         const ds = {
             datastory_id: uuid,
             datastory_title: dataStoryData['ds:DataStory']['ds:Metadata']['dct:title'][0]['_text'],
-            datastory: dataStoryData
+            datastory_file: dataStoryData
         }
         setWriting(true);
         const response = await fetch(API_URL + 'update_datastory', {

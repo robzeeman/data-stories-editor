@@ -138,10 +138,11 @@ async def getDataStories(userdata: Annotated[dict | None, Depends(authenticated_
 
 
 @app.post("/update_datastory")
-async def updateDataStory(data: DataStory):
+async def updateDataStory(request: Request):
+    data = await request.json()
     datastory_id = data["datastory_id"]
     datastory_title = data["datastory_title"]
-    datastory = json.dumps(data["datastory"])
+    datastory = data["datastory_file"]
 
     # save the content to file
     #path = "data/" + str(datastory_id) + "/datastory.json"
