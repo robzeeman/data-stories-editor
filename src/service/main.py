@@ -1,7 +1,6 @@
 import json
 from typing import Union, Annotated
 import uvicorn
-import os
 from fastapi import FastAPI, File, Form, UploadFile, HTTPException, Depends, Body
 from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
 from auth import router as auth_router
@@ -31,7 +30,7 @@ app.add_middleware(SessionMiddleware, secret_key='dkhkajhdlkhdkkk')
 app.add_middleware(CORSMiddleware, allow_origins=['http://localhost'], allow_credentials=True, allow_methods=['*'], allow_headers=['*'])
 app.include_router(auth_router)
 
-data = os.environ.get("DATA_DIR", local_data)
+
 
 
 # @app.get("/")
