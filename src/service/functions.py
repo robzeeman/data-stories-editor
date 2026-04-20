@@ -6,15 +6,14 @@ import uuid
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from urllib.parse import urlparse
-from config import local_data
+from config import DATA_LOCATION
 import requests
-
-data = os.environ.get("DATA_DIR", local_data)
+import toml
 
 def createDataFolder():
     #data = 'data/'
-    if not os.path.exists(data):
-        os.makedirs(data)
+    if not os.path.exists(DATA_LOCATION):
+        os.makedirs(DATA_LOCATION)
     return True
 
 def uri_validator(x):
@@ -29,7 +28,7 @@ def createDataStoriesDB():
     # if not os.path.exists(data):
     #     os.makedirs(data)
 
-    con = sl.connect(data + '/datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()   
     cur.execute("""
             CREATE TABLE IF NOT EXISTS stories (
@@ -56,7 +55,7 @@ def get_setting_users(uuid, eppn):
 
 def fetch_data(sql, values):
     #data = 'data'
-    con = sl.connect(data + '/datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     cur.execute(sql, values)
     names = list(map(lambda x: x[0], cur.description)) # ergens opgezocht
@@ -79,9 +78,17 @@ def fetch_data(sql, values):
         struct.append(row)
     return struct
 
+def get_message():
+    msg = ""
+    if os.path.isfile(DATA_LOCATION + '/config.toml'):
+        with open(DATA_LOCATION + '/config.toml', 'r') as f:
+            conf = toml.load(f)
+        msg = conf['message']
+    return msg
+
 def change_data(sql, values):
     #data = 'data'
-    con = sl.connect(data + '/datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     cur.execute(sql, values)
     con.commit()
@@ -96,7 +103,7 @@ def save_user_rights_str(uuid, eppn, code):
 
 def getDataStorySettings(id):
     #data = 'data'
-    con = sl.connect(data + '/datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     sql = "SELECT status, title, uuid FROM stories WHERE uuid = '" + id + "'"
     cur.execute(sql)
@@ -133,7 +140,7 @@ def revoke_user_rights(uuid, eppn):
 
 def getStoryRights(id):
     #data = 'data'
-    con = sl.connect(data + '/datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     sql = "select v.email, v.name, v.eppn, r.rights from rights  r inner join visitors  v on r.eppn = v.eppn where r.story_uuid = '" + id + "'"
     print(sql)
@@ -161,7 +168,7 @@ def getStoryRights(id):
 
 def set_status(id, status):
     #data = 'data'
-    con = sl.connect(data + '/datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     sql = "UPDATE stories SET status= '" + status +"' WHERE uuid = '" + id + "'"
     cur.execute(sql)
@@ -172,7 +179,7 @@ def set_status(id, status):
 
 def getDataStoriesDB(auth_status):
     #data = 'data'
-    con = sl.connect(data + '/datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     if auth_status["logged_in"] == "yes":
         sql = "SELECT uuid, title, status, strftime('%d-%m-%Y', created) as created, strftime('%d-%m-%Y (%H:%M)',modified) as modified, owner, eppn, groep FROM stories ORDER BY modified DESC"
@@ -246,7 +253,7 @@ def is_owner(eppn, uuid):
 
 def getListUUIDs():
     #data = 'data'
-    con = sl.connect(data + '/datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()   
     sql = "SELECT uuid FROM stories"
     cur.execute(sql)
@@ -257,7 +264,7 @@ def getListUUIDs():
     return list(res)
 
 def insert_user(user_data: dict):
-    con = sl.connect(data + '/datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     sql = "INSERT OR IGNORE INTO visitors (name, email, eppn) VALUES (?, ?, ?)"
     values = (user_data["nickname"], user_data["email"], user_data["sub"])
@@ -289,7 +296,7 @@ def getNewId(auth_status):
 
     # datum = 
     # print('ideetje', ideetje)
-    con = sl.connect(data + '/datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()   
 
     sql = "INSERT INTO stories (status, uuid, owner, eppn, title, groep, created, modified) values(?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))"
@@ -319,7 +326,7 @@ def createDataStoryFolder(id, template):
     # os.path kan wel eens misgaan begrijp ik
     #data = 'data/'
     createDataFolder()
-    directory = data + str(id)
+    directory = DATA_LOCATION + "/" + str(id)
     if not os.path.exists(directory):
         os.makedirs(directory)
         os.makedirs(directory + '/resources/images/')
@@ -331,7 +338,7 @@ def createDataStoryFolder(id, template):
 
 def deleteDataStoryFolder(uuid):
     #data = 'data/'
-    directory = data + str(uuid)
+    directory = DATA_LOCATION +  "/" + str(uuid)
     if os.path.exists(directory):
         # os.removedir
         shutil.rmtree(directory)
@@ -341,7 +348,7 @@ def deleteDataStoryFolder(uuid):
     
 
 def removeFromDB(uuid):
-    con = sl.connect(data + 'datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     sql = 'DELETE FROM stories WHERE uuid = ? '
     cur.execute(sql, (uuid,))
@@ -355,7 +362,7 @@ def removeFromDB(uuid):
 def updateModifiedDate(unique_id, title):
     now = datetime.now(tz=ZoneInfo("Europe/Amsterdam"))
     modified = now.strftime("%Y-%m-%d %H:%M:%S")    # creation timestamp
-    con = sl.connect(data + '/datastories.db')
+    con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()   
     sql = 'UPDATE stories SET title = ?, modified = ? WHERE uuid = ?  '
     print(sql)
@@ -382,7 +389,7 @@ def fs_tree_to_dict(path_):
 
 
 def getDataStory(uuid):
-    directory = data + "/" + str(uuid) # misschien niet meer nodig
+    directory = DATA_LOCATION + "/" + str(uuid) # misschien niet meer nodig
     filename = directory + '/datastory.json'
     datastory = {}
     if os.path.exists(filename):
@@ -393,7 +400,7 @@ def getDataStory(uuid):
 
 
 def saveDataStory(datastory_id, datastory):
-    path = data + str(datastory_id) + "/datastory.json"
+    path = DATA_LOCATION + "/" + str(datastory_id) + "/datastory.json"
 
     with open(path, 'w') as f:
         f.write(json.dumps(datastory))

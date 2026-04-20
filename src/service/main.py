@@ -14,20 +14,20 @@ from functions import (
     deleteDataStoryFolder,getDataStory, getDataStorySettings, fs_tree_to_dict,
     tooManyStories, createDataFolder, set_status, createDataStoriesDB, getDataStoriesDB,
     getListUUIDs, updateModifiedDate, saveDataStory, uri_validator, get_setting_users, add_user_rights, revoke_user_rights,
-    save_user_rights_str, get_item_rights
+    save_user_rights_str, get_item_rights, get_message
 )
 from request_types import (UrlType, SettingStatus, UserRights, DataStory)
 from dependencies import authenticated_user
 from fastapi.staticfiles import StaticFiles
 from starlette.exceptions import HTTPException as StarletteHTTPException
-from config import local_data
+from config import DATA_LOCATION, ds_app_url
 from pathlib import Path
 
 
 app = FastAPI()
 
 app.add_middleware(SessionMiddleware, secret_key='dkhkajhdlkhdkkk')
-app.add_middleware(CORSMiddleware, allow_origins=['http://localhost'], allow_credentials=True, allow_methods=['*'], allow_headers=['*'])
+app.add_middleware(CORSMiddleware, allow_origins=[ds_app_url], allow_credentials=True, allow_methods=['*'], allow_headers=['*'])
 app.include_router(auth_router)
 
 
@@ -132,7 +132,8 @@ async def getDataStories(userdata: Annotated[dict | None, Depends(authenticated_
     status = 'OK'
     auth_status = get_auth_status(userdata)
     structure = getDataStoriesDB(auth_status)
-    response = {"status": status, "auth": auth_status, "structure": structure}
+    message = get_message()
+    response = {"status": status, "auth": auth_status, "structure": structure, "message": message}
     return response
 
 
@@ -189,7 +190,7 @@ async def upload(file: UploadFile, uuid: str = Form(...)):
     # filename = uploaded_file.filename
     content_type = file.content_type
 
-    resources = "data/" + uuid + '/resources' # centraal definieren
+    resources = DATA_LOCATION + "/" + uuid + '/resources'
 
     if content_type.startswith('image'):
         store = resources + '/images/'
@@ -220,7 +221,7 @@ async def resources(uuid: str, resourcetype: str, filename: str):
     # we can severe the api from the real path, safer I think
     # TODO checks and balances maybe
 
-    filepath: str = data + uuid + '/resources/' + resourcetype + '/' + filename
+    filepath: str = DATA_LOCATION + '/' +uuid + '/resources/' + resourcetype + '/' + filename
 
     # TODO mime-types? Or does send_file this..
     try:
@@ -241,14 +242,14 @@ async def resources(uuid: str, resourcetype: str, filename: str):
 #     return FileResponse(fp)
 
 def get_auth_status(user):
-    return {"logged_in": "yes", "user": "Rob Zeeman", "eppn": "3cc036843bde09c86580da2d3d753a527d1e8bfa"}
+    #return {"logged_in": "yes", "user": "Rob Zeeman", "eppn": "3cc036843bde09c86580da2d3d753a527d1e8bfa"}
     if user:
         return {"logged_in": "yes", "user": user.name, "eppn": user.user_id}
     return {"logged_in": "no", "user": "", "eppn": ""}
 
 
-app.mount("/", StaticFiles(directory="frontend", html=True), name="spa")
+app.mount("/", StaticFiles(directory="service/frontend", html=True), name="spa")
 
-if __name__ == "__main__":
-    uvicorn.run('main:app', host='0.0.0.0', port=80, timeout_keep_alive=60, reload=True,
-                log_level='INFO'.lower())
+# if __name__ == "__main__":
+#     uvicorn.run('main:app', host='0.0.0.0', port=80, timeout_keep_alive=60, reload=True,
+#                 log_level='INFO'.lower())

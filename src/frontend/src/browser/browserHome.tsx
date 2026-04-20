@@ -14,6 +14,8 @@ function BrowserHome() {
     const [activeIndex, setActiveIndex] = useState(-1);
     const [activeStore, setActiveStore] = useState("");
     const [loggedIn, setLoggedIn] = useState(false);
+    const[msg, setMsg] = useState("");
+    const[showMsg, setShowMsg] = useState(false);
     const navigate = useNavigate();
 
     async function fetchData() {
@@ -23,6 +25,10 @@ function BrowserHome() {
         if (json.auth.logged_in === 'yes') {
             document.getElementById("login_status").innerText = json.auth.user;
             setLoggedIn(true);
+        }
+        if (json.message !== undefined && json.message !== "") {
+            setMsg(json.message);
+            setShowMsg(true);
         }
         setLoading(false);
     }
@@ -72,6 +78,7 @@ function BrowserHome() {
 
     return (
         <div className="dsRepository">
+            {showMsg && <div className="userMessage">{msg}</div>}
             <div className="btnPanel">
                 {loggedIn && <div className="panelButton" onClick={() => createDataStory()}>+ New</div>}
                 {/*<div className="panelButton" onClick={() => {
