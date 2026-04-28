@@ -317,8 +317,6 @@ def getNewId(auth_status):
 
     cur.close()
     con.close()
-
-    # print('result', result)
     return result[0][1]
 
 def createDataStoryFolder(id, template):

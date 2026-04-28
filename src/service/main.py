@@ -55,42 +55,43 @@ def set_settings(data: SettingStatus):
     return result
 
 @app.get("/get_setting_users")
-def setting_users(ds: str):
-    status = get_auth_status()
+def setting_users(ds: str, userdata: Annotated[dict | None, Depends(authenticated_user)]):
+    status = get_auth_status(userdata)
     result = get_setting_users(ds, status["eppn"])
     return result
 
 @app.post("/save_user_rights")
-def save_user_rights(data: UserRights):
-    status = get_auth_status()
+async def save_user_rights(request: Request, userdata: Annotated[dict | None, Depends(authenticated_user)]):
+    data = await request.json()
+    status = get_auth_status(userdata)
     if status["logged_in"] == "yes":
         save_user_rights_str(data["uuid"], data["eppn"], data["rights"])
     return {"status": "OK"}
 
 
 @app.get("/add_user_rights")
-def add_rights(ds: str, eppn: str):
-    status = get_auth_status()
+def add_rights(ds: str, eppn: str, userdata: Annotated[dict | None, Depends(authenticated_user)]):
+    status = get_auth_status(userdata)
     if status["logged_in"] == "yes":
         add_user_rights(ds, eppn)
     return {"status": "OK"}
 
 @app.get("/revoke_user_rights")
-def revoke_rights(ds: str, eppn: str):
-    status = get_auth_status()
+def revoke_rights(ds: str, eppn: str, userdata: Annotated[dict | None, Depends(authenticated_user)]):
+    status = get_auth_status(userdata)
     if status["logged_in"] == "yes":
         revoke_user_rights(ds, eppn)
     return {"status": "OK"}
 
 @app.get("/create_new")
-def create_new():
-    status = get_auth_status()
+def create_new(userdata: Annotated[dict | None, Depends(authenticated_user)]):
+    user_status = get_auth_status(userdata)
     max = 100 # maximaal 100 datastories
-    if tooManyStories(max) or status["logged_in"] == "no":
+    if tooManyStories(max) or user_status["logged_in"] == "no":
         response = {"status": 'ff aan de rem getrokken'}
         return response
 
-    id = getNewId(status)
+    id = getNewId(user_status)
     status = createDataStoryFolder(id, template)
     if status == True:
         # stringie = 'I created something new! De unieke id is: ' + str(id)
@@ -152,7 +153,7 @@ async def updateDataStory(request: Request):
     saveDataStory(datastory_id, datastory)
     updateModifiedDate(datastory_id, datastory_title)
 
-    return {"status": "OK"};
+    return {"status": "OK"}
 
 # ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 

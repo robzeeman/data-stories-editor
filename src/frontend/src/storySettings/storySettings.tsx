@@ -30,7 +30,7 @@ function StorySettings() {
     async function save() {
         const jsonStruc = {"id": store, "status": status}
         //console.log(jsonStruc);
-        const result = await fetch(API_URL + '/set_settings', {
+        const result = await fetch(API_URL + 'set_settings', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

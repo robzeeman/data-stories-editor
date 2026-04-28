@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.de44326c.css",
-    "main.js": "/static/js/main.0bde9409.js",
+    "main.css": "/static/css/main.0ba43973.css",
+    "main.js": "/static/js/main.99340a36.js",
     "static/js/787.74d7d594.chunk.js": "/static/js/787.74d7d594.chunk.js",
     "static/media/chart.cjs": "/static/media/chart.e1e46e3e089138a9ecc2.cjs",
     "static/media/logo_clariah.png": "/static/media/logo_clariah.95496b33b6a942971de1.png",
@@ -13,12 +13,12 @@
     "static/media/icon-edit.svg": "/static/media/icon-edit.07d674452d22ac129f374000c8e0c40d.svg",
     "static/media/documents-svgrepo-com.svg": "/static/media/documents-svgrepo-com.78cc9032d1bd537b29f137ff1a2ed005.svg",
     "static/media/down-arrow-svgrepo-com.svg": "/static/media/down-arrow-svgrepo-com.8b7e9685b79ff0b40c81f6b741a53c07.svg",
-    "main.de44326c.css.map": "/static/css/main.de44326c.css.map",
-    "main.0bde9409.js.map": "/static/js/main.0bde9409.js.map",
+    "main.0ba43973.css.map": "/static/css/main.0ba43973.css.map",
+    "main.99340a36.js.map": "/static/js/main.99340a36.js.map",
     "787.74d7d594.chunk.js.map": "/static/js/787.74d7d594.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.de44326c.css",
-    "static/js/main.0bde9409.js"
+    "static/css/main.0ba43973.css",
+    "static/js/main.99340a36.js"
   ]
 }

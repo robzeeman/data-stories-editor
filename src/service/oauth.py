@@ -1,4 +1,4 @@
-from os import environ
+import os
 from authlib.integrations.starlette_client import OAuth
 
 #oauth = None
@@ -17,8 +17,8 @@ from authlib.integrations.starlette_client import OAuth
 oauth = OAuth()
 oauth.register(
         name='oidc',
-        client_id='nl_clariah_oidc-test',
-        client_secret='d3860f36-5d8e-11f0-9a20-3b86b64afb06',
+        client_id=os.environ.get("OIDC_CLIENT_ID",'nl_clariah_oidc-test'),
+        client_secret=os.environ.get("OIDC_CLIENT_SECRET", 'd3860f36-5d8e-11f0-9a20-3b86b64afb06'),
         server_metadata_url='https://authentication.clariah.nl/.well-known/openid-configuration',
         client_kwargs={
             'scope': 'openid profile email'
