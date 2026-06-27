@@ -24,7 +24,6 @@ def uri_validator(x):
         return 0
 
 def createDataStoriesDB():
-    #data = 'data'
     # if not os.path.exists(data):
     #     os.makedirs(data)
 
@@ -54,7 +53,6 @@ def get_setting_users(uuid, eppn):
     return result
 
 def fetch_data(sql, values):
-    #data = 'data'
     con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     cur.execute(sql, values)
@@ -87,7 +85,6 @@ def get_message():
     return msg
 
 def change_data(sql, values):
-    #data = 'data'
     con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     cur.execute(sql, values)
@@ -102,7 +99,6 @@ def save_user_rights_str(uuid, eppn, code):
     return change_data(sql, values)
 
 def getDataStorySettings(id):
-    #data = 'data'
     con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     sql = "SELECT status, title, uuid FROM stories WHERE uuid = '" + id + "'"
@@ -178,7 +174,6 @@ def set_status(id, status):
     return {"status": "OK"}
 
 def getDataStoriesDB(auth_status):
-    #data = 'data'
     con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()
     if auth_status["logged_in"] == "yes":
@@ -252,7 +247,6 @@ def is_owner(eppn, uuid):
         return False
 
 def getListUUIDs():
-    #data = 'data'
     con = sl.connect(DATA_LOCATION + '/datastories.db')
     cur = con.cursor()   
     sql = "SELECT uuid FROM stories"
@@ -275,9 +269,7 @@ def insert_user(user_data: dict):
 
 
 def tooManyStories(max):
-    #data = 'data/'
- 
-    count = len(os.listdir(data))
+    count = len(os.listdir(DATA_LOCATION))
     print('aantal dirs', count)
     if(count > max):
         return True
