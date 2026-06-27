@@ -1,11 +1,11 @@
-FROM python:3.14
+FROM python:3.13-alpine
 
 WORKDIR /app
 
-COPY ./requirements.txt /app/requirements.txt
+COPY ./service/requirements.txt /app/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
-COPY ./service /app/service
+COPY ./service/ /app/service/
 
 CMD ["fastapi", "run", "service/main.py", "--port", "80"]

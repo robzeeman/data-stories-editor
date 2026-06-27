@@ -1,0 +1,11 @@
+services:
+  stories:
+    image: data_stories
+    container_name: robz
+    environment:
+      - APP_DOMAIN=http://localhost
+    volumes:
+      - /Users/robzeeman/Documents/DI_code/data_stories/localhost.data:/app/service/data
+    ports:
+      - 80:80
+

@@ -1,0 +1,42 @@
+services:
+  dsapp:
+    image: registry.diginfra.net/tsd/data-stories-editor:0.9
+    container_name: data-stories-editor
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.dsapp.loadbalancer.server.port=80"
+      - "traefik.http.routers.dsapp.entrypoints=http"
+      - "traefik.http.routers.dsapp.rule=Host(`stories.clariah.nl`)"
+    environment:
+      - OIDC_SERVER=https://authentication.clariah.nl
+      - OIDC_CLIENT_ID=nl_clariah_stories
+      - OIDC_CLIENT_SECRET=d1bae360-4043-11f0-bffb-3e22fb0c82e0
+      - OIDC_REDIRECT_URI=https://stories.clariah.nl/oidc_callback
+    volumes:
+      - /data/products/data-stories/data:/app/service/data
+    networks:
+      - traefik-public
+
+  stories-backup:
+    image: registry.diginfra.net/tsd/data-stories-backup
+    container_name: data-stories-backup
+    restart: unless-stopped
+    environment:
+      BACKUP_HOUR: "03"
+      BACKUP_MINUTE: "15"
+      BACKUP_NAME: "data-stories"
+      BACKUP_LOCATION: "/backup/data"
+      BACKUP_FILE: "/backup/data/data-stories.tgz"
+    volumes:
+      - /backup/data/data-stories:/backup/data
+      - /data/products/data-stories/data:/data
+    networks:
+      - traefik-public
+    depends_on:
+      - data-stories-editor
+
+
+networks:
+  traefik-public:
+    external: true
